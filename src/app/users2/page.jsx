@@ -13,15 +13,18 @@ import {
     TextArea,
     TextField,
 } from "@heroui/react";
-const FromSubmitPage = () => {
+import { useRouter } from "next/navigation";
 
+const FromSubmitPage = () => {
+const router = useRouter();
     const onSubmit = async(e) => {
+        
         e.preventDefault();
         const fromData = new FormData(e.target);
         const newUsers = Object.fromEntries(fromData.entries());
         console.log(newUsers);
         
-        const res = await fetch('http://localhost:8000/users', {
+        const req = await fetch('http://localhost:8000/users', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -29,8 +32,12 @@ const FromSubmitPage = () => {
             body: JSON.stringify(newUsers)
         })
 
-        const data = await res.json();
-        console.log(data);
+        const res = await req.json();
+        // console.log(res);
+        if(res.success){
+            alert('user create successfully');
+            router.push('/users');
+        }
         
 
     }
