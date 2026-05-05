@@ -20,8 +20,6 @@ const UsersPage = async() => {
                 }
             </div>
         </div>
-
-        
     );
 };
 
