@@ -16,9 +16,12 @@ const UsersPage = async() => {
                     <h1>{d.email}</h1>
 
                     </div>)
+
                 }
             </div>
         </div>
+
+        
     );
 };
 
